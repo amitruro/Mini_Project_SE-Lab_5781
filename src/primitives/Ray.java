@@ -4,16 +4,31 @@ public class Ray {
     final Point3D p0;
     final Vector _dir;
 
-    // Constructor
+    /**
+     * constructor for Ray
+     *
+     * @param point3D point of RaY
+     * @param vector  vector of RAY
+     */
     public Ray(Point3D point3D, Vector vector) {
         p0 = point3D;
         _dir = vector.normalized();
     }
 
+    /**
+     * getter
+     *
+     * @return point of Ray
+     */
     public Point3D getP0() {
         return p0;
     }
 
+    /**
+     * getter
+     *
+     * @return vector of Ray
+     */
     public Vector get_dir() {
         return _dir;
     }

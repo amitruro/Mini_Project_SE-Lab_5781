@@ -5,7 +5,13 @@ import static primitives.Point3D.ZERO;
 public class Vector {
     Point3D _head;
 
-    // Constructors
+    /**
+     * constructor for Vector
+     *
+     * @param x value for X Coordinate of head
+     * @param y value for Y Coordinate of head
+     * @param z value for Z Coordinate of head
+     */
     public Vector(Coordinate x, Coordinate y, Coordinate z) {
         _head = new Point3D(x, y, z);
         if (_head.equals(ZERO)) {
@@ -13,6 +19,13 @@ public class Vector {
         }
     }
 
+    /**
+     * constructor for Vector
+     *
+     * @param x value for X Coordinate of head
+     * @param y value for Y Coordinate of head
+     * @param z value for Z Coordinate of head
+     */
     public Vector(double x, double y, double z) {
         _head = new Point3D(x, y, z);
         if (_head.equals(ZERO)) {
@@ -20,11 +33,20 @@ public class Vector {
         }
     }
 
+    /**
+     * constructor for Vector
+     *
+     * @param head head of Vector
+     */
     public Vector(Point3D head) {
         this(head._x, head._y, head._z);
     }
 
-    //Getter
+    /**
+     * getter
+     *
+     * @return head of Vector
+     */
     public Point3D getHead() {
         return _head;
     }

@@ -7,11 +7,24 @@ public class Point3D {
 
     public static final Point3D ZERO = new Point3D(0d, 0d, 0d);
 
-    // Constructors
+    /**
+     * constructor for Point3D
+     *
+     * @param x value for X Coordinate
+     * @param y value for Y Coordinate
+     * @param z value for Z Coordinate
+     */
     public Point3D(Coordinate x, Coordinate y, Coordinate z) {
         this(x.coord, y.coord, z.coord);
     }
 
+    /**
+     * basic constructor for Point3D
+     *
+     * @param x value for X Coordinate
+     * @param y value for Y Coordinate
+     * @param z value for Z Coordinate
+     */
     public Point3D(double x, double y, double z) {
         _x = new Coordinate(x);
         _y = new Coordinate(y);
@@ -60,14 +73,29 @@ public class Point3D {
         return _x.equals(point3D._x) && _y.equals(point3D._y) && _z.equals(point3D._z);
     }
 
+    /**
+     * getter
+     *
+     * @return X coordinate of Point3D
+     */
     public Coordinate getX() {
         return _x;
     }
 
+    /**
+     * getter
+     *
+     * @return Y coordinate of Point3D
+     */
     public Coordinate getY() {
         return _y;
     }
 
+    /**
+     * getter
+     *
+     * @return Z coordinate of Point3D
+     */
     public Coordinate getZ() {
         return _z;
     }
