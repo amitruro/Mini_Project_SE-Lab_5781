@@ -76,28 +76,28 @@ public class Point3D {
     /**
      * getter
      *
-     * @return X coordinate of Point3D
+     * @return X the value of coordinate of X of Point3D
      */
-    public Coordinate getX() {
-        return _x;
+    public double getX() {
+        return _x.coord;
     }
 
     /**
      * getter
      *
-     * @return Y coordinate of Point3D
+     * @return Y the value of coordinate of Y of Point3D
      */
-    public Coordinate getY() {
-        return _y;
+    public double getY() {
+        return _y.coord;
     }
 
     /**
      * getter
      *
-     * @return Z coordinate of Point3D
+     * @return Z the value of coordinate of Z of Point3D
      */
-    public Coordinate getZ() {
-        return _z;
+    public double getZ() {
+        return _z.coord;
     }
 
     @Override

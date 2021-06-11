@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TriangleTest {
 
     @Test
-    void testnormal() {
+    void testGetNormal() {
         Triangle tr = new Triangle(new Point3D(0, 0, 1), new Point3D(1, 1, 1), new Point3D(1, 0, 1));
         assertEquals(new Vector(0, 0, -1), tr.getNormal(null));
     }

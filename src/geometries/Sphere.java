@@ -1,11 +1,15 @@
 package geometries;
 
 import primitives.Point3D;
+import primitives.Ray;
 import primitives.Vector;
 
-public class Sphere implements Geometry {
-    final public Point3D _center;
-    final public double _radius;
+import java.util.List;
+
+import static primitives.Util.alignZero;
+
+public class Sphere extends RadialGeometry implements Geometry {
+    final Point3D _center;
 
     /**
      * constructor for Sphere
@@ -13,9 +17,9 @@ public class Sphere implements Geometry {
      * @param point3D center of Sphere
      * @param rad     radius of Sphere
      */
-    public Sphere(Point3D point3D, double rad) {
+    public Sphere(double rad, Point3D point3D) {
+        super(rad);
         _center = point3D;
-        _radius = rad;
     }
 
     /**
@@ -25,15 +29,6 @@ public class Sphere implements Geometry {
      */
     public Point3D getCenter() {
         return _center;
-    }
-
-    /**
-     * getter
-     *
-     * @return radius of Sphere
-     */
-    public double getRadius() {
-        return _radius;
     }
 
     /**
@@ -56,5 +51,41 @@ public class Sphere implements Geometry {
                 "_center=" + _center +
                 ", _radius=" + _radius +
                 '}';
+    }
+
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        Point3D p0 = ray.getP0();
+        Point3D O = _center;
+        Vector V = ray.get_dir();
+
+        if (p0.equals(O)) {
+            throw new IllegalArgumentException("Ray p0 can't be equals to the center of the sphere");
+        }
+
+        Vector U = O.subtract(p0);
+        double tm = V.dotProduct(U);
+        double d = alignZero(Math.sqrt(U.lengthSquared() - tm * tm));
+        if (d >= _radius) {
+            return null;
+        }
+
+        double tn = Math.sqrt(_radius * _radius - d * d);
+        double t1 = tm - tn;
+        double t2 = tm + tn;
+
+        if (t1 > 0 && t2 > 0) {
+            return (List.of(ray.getPoint(t1), ray.getPoint(t2)));
+        }
+
+        if (t1 > 0) {
+            return (List.of(ray.getPoint(t1)));
+        }
+
+        if (t2 > 0) {
+            return (List.of(ray.getPoint(t2)));
+        }
+
+        return null;
     }
 }

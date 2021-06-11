@@ -107,7 +107,7 @@ public class Vector {
         return this;
     }
 
-    // Normalize a vector calculate: u = (x/(x^2 + y^2 + Z^2)^(1/2), y/(x^2 + y^2 + z^2)^(1/2), z/(x^2 + y^2 + z^2)^(1/2))
+    // Normalize a vector calculate: u = (x/((x^2 + y^2 + Z^2)^(1/2)), y/((x^2 + y^2 + z^2)^(1/2)), z/((x^2 + y^2 + z^2)^(1/2)))
     public Vector normalized() {
         double length = length();
         Vector vector1 = new Vector(_head._x.coord / length, _head._y.coord / length, _head._z.coord / length);

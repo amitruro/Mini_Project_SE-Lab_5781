@@ -4,9 +4,10 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
-public class Tube implements Geometry {
+import java.util.List;
+
+public class Tube extends RadialGeometry implements Geometry {
     final Ray _axisRay;
-    final double _radius;
 
     /**
      * constructor for Tube
@@ -14,9 +15,9 @@ public class Tube implements Geometry {
      * @param ray ray of Tube
      * @param rad radius of Tube
      */
-    public Tube(Ray ray, double rad) {
+    public Tube(double rad, Ray ray) {
+        super(rad);
         _axisRay = ray;
-        _radius = rad;
     }
 
     /**
@@ -29,19 +30,11 @@ public class Tube implements Geometry {
     }
 
     /**
-     * getter
-     *
-     * @return radius of Tube
-     */
-    public double getRadius() {
-        return _radius;
-    }
-
-    /**
      * get the normal of Tube
      * Finding point O (O is projection of P on cylinder's ray):
      * 𝑡 = 𝑣 ∙ (𝑃 − 𝑃0)
      * 𝑂 = 𝑃0 + 𝑡 ∙ 𝑣
+     * n = P - O
      *
      * @param point
      * @return normal of Tube
@@ -53,6 +46,12 @@ public class Tube implements Geometry {
         Vector v = _axisRay.get_dir();
         double t = v.dotProduct(p_p0);
         Point3D O = p0.add(v.scale(t));
-        return point.subtract(O).normalize();
+        Vector n = point.subtract(O);
+        return n.normalize();
+    }
+
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        return null;
     }
 }
